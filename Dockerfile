@@ -1,5 +1,3 @@
-FROM rust:1.19.0
-WORKDIR /usr/src/rust-cv
-COPY . .
-RUN cargo install
-CMD ["rust-cv"]
+FROM scratch
+COPY target/i686-unknown-linux-musl/release/rust-cv /
+CMD ["/rust-cv"]
