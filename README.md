@@ -3,6 +3,8 @@ Rust application that shows my resume in a terminal UI fashion
 
 ![gif](https://raw.githubusercontent.com/maitesin/rust-cv/master/cv.gif)
 
+You can run it locally with `docker run -it maitesin/resume`
+
 ## Install rust
 
 ```
