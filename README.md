@@ -20,5 +20,8 @@ cargo build --target i686-unknown-linux-musl --release
 ## Build the Docker image
 
 ```
-docker build .
+docker build -t resume .
+docker tag resume maitesin/resume
+docker login
+docker push maitesin/resume
 ```
