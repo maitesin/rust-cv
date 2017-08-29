@@ -162,8 +162,11 @@ fn draw_welcome(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .title("Welcome to Oscar Forner's Curriculum Vitae")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →} \
-                        to move between the tabs.\n\nUse {mod=bold;fg=yellow q} to exit the application.\n\nI hope you like it!")
+                    .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →} to move between the tabs.\n\n\
+                           Use {mod=bold;fg=yellow q} to exit the application.\n\n\
+                           I hope you like it!\n\n\
+                           {mod=bold;fg=yellow **Note:} Optimized resolution of the command line is 120x40 characters.{mod=bold;fg=yellow **}\
+                           ")
                     .render(t, &chunks[1]);
                 });
         });
@@ -252,7 +255,7 @@ fn draw_skills(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[0], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("Modern C++ (11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("C++ (11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
