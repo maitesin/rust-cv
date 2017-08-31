@@ -1,5 +1,3 @@
-extern crate log;
-
 extern crate tui;
 extern crate termion;
 
