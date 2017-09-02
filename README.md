@@ -1,4 +1,5 @@
-# rust-cv
+# Oscar Forner's Curriculum
+[![Build Status](https://travis-ci.org/maitesin/rust-cv.svg?branch=master)](https://travis-ci.org/maitesin/rust-cv)
 Rust application that shows my resume in a terminal UI fashion
 
 ![gif](https://raw.githubusercontent.com/maitesin/rust-cv/master/cv.gif)
