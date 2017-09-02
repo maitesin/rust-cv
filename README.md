@@ -7,12 +7,6 @@ Rust application that shows my resume in a terminal UI fashion
 
 You can run it locally with `docker run -it maitesin/resume`
 
-## Install rust
-
-```
-curl https://sh.rustup.rs -sSf > rustup.sh
-chmod +x rustup.sh
-```
 
 ## How to build the application to be statically linked
 
