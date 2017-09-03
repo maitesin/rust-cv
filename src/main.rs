@@ -48,7 +48,7 @@ fn main() {
     let mut app = App {
         size: Rect::default(),
         tabs: MyTabs {
-            titles: vec!["Welcome", "Personal", "Skills", "Experience", "Studies"],
+            titles: vec!["Welcome", "Personal", "Skills", "Experience", "Studies", "Looking For"],
             selection: 0,
         }
     };
@@ -137,6 +137,9 @@ fn draw(t: &mut Terminal<TermionBackend>, app: &App) -> Result<(), io::Error> {
                 }
                 4 => {
                     draw_education(t, &chunks[1]);
+                }
+                5 => {
+                    draw_looking_for(t, &chunks[1]);
                 }
                 _ => {}
             };
@@ -477,4 +480,33 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[4]);
                 });
     });
+}
+
+fn draw_looking_for(t: &mut Terminal<TermionBackend>, area: &Rect) {
+    Group::default()
+        .direction(Direction::Vertical)
+        .sizes(&[Size::Percent(10), Size::Percent(80), Size::Percent(10)])
+        .render(t, area, |t, chunks| {
+                Group::default()
+                .direction(Direction::Horizontal)
+                .sizes(&[Size::Percent(10), Size::Percent(80), Size::Percent(10)])
+                .render(t, &chunks[1], |t, chunks| {
+                    Paragraph::default()
+                    .block(Block::default()
+                        .borders(border::ALL)
+                        .title("What I am looking for?")
+                        .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
+                    .wrap(true)
+                    .text("\n{mod=bold;fg=yellow I'm pretty happy where I'm at right now}\n\n\n\
+                           My ideal roles involve a combination of the following:\n\n\
+                           \t* Write low level libraries and/or components.\n\
+                           \t* Create and integrate APIs to expose and extend the functionality.\n\
+                           \t* Create and improve the tools used during the development.\n\
+                           \t* Work in the internals of Operating Systems such as GNU/Linux and FreeBSD.\n\
+                           \t* Work on compilers and/or interpreters and designing programming languages.\n\
+                           \t* Contribute to Open Source software.\
+                           ")
+                    .render(t, &chunks[1]);
+                });
+        });
 }
