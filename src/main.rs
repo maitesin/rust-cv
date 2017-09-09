@@ -163,7 +163,7 @@ fn draw_welcome(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .title("Welcome to Oscar Forner's Curriculum Vitae")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →} to move between the tabs.\n\n\
+                    .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →}  to move between the tabs.\n\n\
                            Use {mod=bold;fg=yellow q} to exit the application.\n\n\
                            I hope you like it!\n\n\
                            {mod=bold;fg=yellow **Note:} Optimized resolution of the command line is 120x40 characters.{mod=bold;fg=yellow **}\
@@ -497,14 +497,15 @@ fn draw_looking_for(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\n{mod=bold;fg=yellow I'm pretty happy where I'm at right now}\n\n\n\
+                    .text("\n{mod=bold;fg=yellow I am looking for a Software Engineer or Site Reliability Engineer position}\n\n\n\
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
                            \t* Create and integrate APIs to expose and extend the functionality.\n\
                            \t* Create and improve the tools used during the development.\n\
                            \t* Work in the internals of Operating Systems such as GNU/Linux and FreeBSD.\n\
                            \t* Work on compilers and/or interpreters and designing programming languages.\n\
-                           \t* Contribute to Open Source software.\
+                           \t* Contribute to Open Source software.\n\
+                           \t* Design, develop and maintain a high performance and reliable system.\
                            ")
                     .render(t, &chunks[1]);
                 });
