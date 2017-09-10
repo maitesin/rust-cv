@@ -497,7 +497,7 @@ fn draw_looking_for(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\n{mod=bold;fg=yellow I am looking for a Software Engineer or Site Reliability Engineer position}\n\n\n\
+                    .text("\n{mod=bold;fg=yellow I am happy where I am currently working}\n\n\n\
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
                            \t* Create and integrate APIs to expose and extend the functionality.\n\
