@@ -8,7 +8,7 @@ Rust application that shows my resume in a terminal UI fashion
 You can run it locally with `docker run -it maitesin/resume`
 
 
-## How to build the application to be statically linked
+## How to build the application locally
 
 ```
 rustup target add i686-unknown-linux-musl
@@ -18,8 +18,10 @@ cargo build --target i686-unknown-linux-musl --release
 ## Build the Docker image
 
 ```
-docker build -t resume .
-docker tag resume maitesin/resume
+docker build -t DOCKER_HUB_USERNAME/resume .
+docker tag resume DOCKER_HUB_USERNAME/resume
 docker login
-docker push maitesin/resume
+docker push DOCKER_HUB_USERNAME/resume
 ```
+
+Or set up an automated build on the Docker Hub!
