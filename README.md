@@ -1,5 +1,7 @@
 # Oscar Forner's Curriculum
 [![Build Status](https://travis-ci.org/maitesin/rust-cv.svg?branch=master)](https://travis-ci.org/maitesin/rust-cv)
+[![](https://images.microbadger.com/badges/image/maitesin/resume.svg)](https://microbadger.com/images/maitesin/resume "Get your own image badge on microbadger.com")
+
 
 Rust application that shows my resume in a terminal UI fashion
 
