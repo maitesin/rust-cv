@@ -23,3 +23,6 @@ docker tag resume maitesin/resume
 docker login
 docker push maitesin/resume
 ```
+
+## Automatically build
+Since the change for multi-stage Dockerfile I set up an automatic build in DockerHub: https://hub.docker.com/r/maitesin/resume
