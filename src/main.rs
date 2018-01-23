@@ -10,8 +10,8 @@ use termion::event;
 use termion::input::TermRead;
 
 use tui::Terminal;
-use tui::backend::TermionBackend;
-use tui::widgets::{Widget, Block, SelectableList, Gauge, Paragraph, border, Tabs};
+use tui::backend::RawBackend;
+use tui::widgets::{Widget, Block, SelectableList, Gauge, Paragraph, Borders, Tabs};
 use tui::layout::{Group, Direction, Size, Rect};
 use tui::style::{Style, Color, Modifier};
 
@@ -74,7 +74,7 @@ fn main() {
         }
     });
 
-    let backend = TermionBackend::new().unwrap();
+    let backend = RawBackend::new().unwrap();
     let mut terminal = Terminal::new(backend).unwrap();
     terminal.clear().unwrap();
     terminal.hide_cursor().unwrap();
@@ -109,14 +109,14 @@ fn main() {
     terminal.clear().unwrap();
 }
 
-fn draw(t: &mut Terminal<TermionBackend>, app: &App) -> Result<(), io::Error> {
+fn draw(t: &mut Terminal<RawBackend>, app: &App) -> Result<(), io::Error> {
 
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Fixed(3), Size::Min(0)])
         .render(t, &app.size, |t, chunks| {
             Tabs::default()
-                .block(Block::default().borders(border::ALL).title("Tabs"))
+                .block(Block::default().borders(Borders::ALL).title("Tabs"))
                 .titles(&app.tabs.titles)
                 .style(Style::default().fg(Color::Green))
                 .highlight_style(Style::default().fg(Color::Yellow))
@@ -148,7 +148,7 @@ fn draw(t: &mut Terminal<TermionBackend>, app: &App) -> Result<(), io::Error> {
     Ok(())
 }
 
-fn draw_welcome(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_welcome(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(10), Size::Percent(80), Size::Percent(10)])
@@ -159,7 +159,7 @@ fn draw_welcome(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[1], |t, chunks| {
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("Welcome to Oscar Forner's Curriculum Vitae")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -173,7 +173,7 @@ fn draw_welcome(t: &mut Terminal<TermionBackend>, area: &Rect) {
         });
 }
 
-fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(40), Size::Percent(60)])
@@ -184,7 +184,7 @@ fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
             .render(t, &chunks[0], |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("Information")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -196,7 +196,7 @@ fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("Languages")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -212,7 +212,7 @@ fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
             .render(t, &chunks[1], |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("Contact")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -226,7 +226,7 @@ fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("About me")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -240,13 +240,13 @@ fn draw_personal(t: &mut Terminal<TermionBackend>, area: &Rect) {
         });
 }
 
-fn draw_skills(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(60), Size::Percent(40)])
         .render(t, area, |t, chunks| {
             Block::default()
-                .borders(border::ALL)
+                .borders(Borders::ALL)
                 .title("Programming Languages")
                 .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                 .render(t, &chunks[0]);
@@ -311,7 +311,7 @@ fn draw_skills(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[5]);
             });
             Block::default()
-                .borders(border::ALL)
+                .borders(Borders::ALL)
                 .title("Others")
                 .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                 .render(t, &chunks[1]);
@@ -321,37 +321,37 @@ fn draw_skills(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(15),Size::Fixed(2),Size::Fixed(24),Size::Fixed(2),Size::Fixed(25),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2)])
                 .render(t, &chunks[1], |t, chunks| {
                     SelectableList::default()
-                        .block(Block::default().borders(border::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Make", "CMake", "Gradle", "Waf", "Scons", "Maven"])
                         .render(t, &chunks[0]);
                     SelectableList::default()
-                        .block(Block::default().borders(border::ALL).title("Continuous Integration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .block(Block::default().borders(Borders::ALL).title("Continuous Integration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Gitlab CI", "Travis", "Jenkins"])
                         .render(t, &chunks[2]);
                     SelectableList::default()
-                        .block(Block::default().borders(border::ALL).title("Static/Dynamic Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .block(Block::default().borders(Borders::ALL).title("Static/Dynamic Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Clang-sanitizer", "Coverity", "Perf", "Valgrind"])
                         .render(t, &chunks[4]);
                     SelectableList::default()
-                        .block(Block::default().borders(border::ALL).title("Unit Test").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .block(Block::default().borders(Borders::ALL).title("Unit Test").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Google Test", "Google Mock", "Unity", "FFF"])
                         .render(t, &chunks[6]);
                     SelectableList::default()
-                        .block(Block::default().borders(border::ALL).title("Tools").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .block(Block::default().borders(Borders::ALL).title("Tools").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Cling", "Clang-tidy", "Clang-format", "Ctags", "Cscope", "Mozilla rr"])
                         .render(t, &chunks[8]);
             });
     });
 }
 
-fn draw_experience(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(30), Size::Percent(30),Size::Percent(20), Size::Percent(19),Size::Fixed(1)])
         .render(t, area, |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("2016 - Present: Software Engineer at VCA Technology")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -362,7 +362,7 @@ fn draw_experience(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("2015 - 2016: Software Developer at Programming Research")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -373,7 +373,7 @@ fn draw_experience(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[1]);
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("2013 - 2015: Software Engineer at European Bioinformatics Institute")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -383,7 +383,7 @@ fn draw_experience(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[2]);
                 Paragraph::default()
                 .block(Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("2013 - Present: Open Source")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -394,13 +394,13 @@ fn draw_experience(t: &mut Terminal<TermionBackend>, area: &Rect) {
     });
 }
 
-fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_education(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(35), Size::Percent(65)])
         .render(t, area, |t, chunks| {
                 Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("Education")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                     .render(t, &chunks[0]);
@@ -411,7 +411,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[0], |t, chunks| {
                         Paragraph::default()
                         .block(Block::default()
-                            .borders(border::ALL)
+                            .borders(Borders::ALL)
                             .title("2010 - 2013: Bachelor of Engineering in Computer Science")
                             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .wrap(true)
@@ -420,7 +420,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .render(t, &chunks[0]);
                         Paragraph::default()
                         .block(Block::default()
-                            .borders(border::ALL)
+                            .borders(Borders::ALL)
                             .title("2006 - 2010: Associate Degree in Computer Science")
                             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .wrap(true)
@@ -429,7 +429,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                         .render(t, &chunks[1]);
                 });
                 Block::default()
-                    .borders(border::ALL)
+                    .borders(Borders::ALL)
                     .title("Courses")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                     .render(t, &chunks[1]);
@@ -440,7 +440,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[1], |t, chunks| {
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("LFD331: Developing Linux Device Drivers (from Linux Foundation) - April 2016")
                         .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -448,7 +448,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[0]);
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("LFD320: Linux Kernel Internals and Debugging (from Linux Foundation) - March 2016")
                         .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -456,7 +456,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[1]);
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("Agile for Developers (from Accelebrate) - August 2015")
                         .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -464,7 +464,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[2]);
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("Algorithms, Part II (from Coursera) - November 2014")
                         .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -472,7 +472,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
                     .render(t, &chunks[3]);
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("Algorithms, Part I (from Coursera) - September 2014")
                         .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .wrap(true)
@@ -482,7 +482,7 @@ fn draw_education(t: &mut Terminal<TermionBackend>, area: &Rect) {
     });
 }
 
-fn draw_looking_for(t: &mut Terminal<TermionBackend>, area: &Rect) {
+fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
         .sizes(&[Size::Percent(10), Size::Percent(80), Size::Percent(10)])
@@ -493,7 +493,7 @@ fn draw_looking_for(t: &mut Terminal<TermionBackend>, area: &Rect) {
                 .render(t, &chunks[1], |t, chunks| {
                     Paragraph::default()
                     .block(Block::default()
-                        .borders(border::ALL)
+                        .borders(Borders::ALL)
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
