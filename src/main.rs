@@ -297,7 +297,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("60 / 100"))
+                    .label(&format!("70 / 100"))
                     .percent(60)
                     .render(t, &chunks[4]);
                 Gauge::default()
@@ -322,7 +322,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .render(t, &chunks[1], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Make", "CMake", "Gradle", "Waf", "Scons", "Maven"])
+                        .items(&vec!["Make", "CMake", "Ninja", "Waf", "Meson", "Gradle"])
                         .render(t, &chunks[0]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Continuous Integration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -497,7 +497,7 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\n{mod=bold;fg=yellow I am happy where I am currently working}\n\n\n\
+                    .text("\n{mod=bold;fg=yellow I am currently looking for new opportunities}\n\n\n\
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
                            \t* Create and integrate APIs to expose and extend the functionality.\n\
