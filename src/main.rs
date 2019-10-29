@@ -176,11 +176,11 @@ fn draw_welcome(t: &mut Terminal<RawBackend>, area: &Rect) {
 fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
-        .sizes(&[Size::Percent(40), Size::Percent(60)])
+        .sizes(&[Size::Percent(50), Size::Percent(50)])
         .render(t, area, |t, chunks| {
             Group::default()
             .direction(Direction::Horizontal)
-            .sizes(&[Size::Percent(50), Size::Percent(50)])
+            .sizes(&[Size::Percent(35), Size::Percent(65)])
             .render(t, &chunks[0], |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
@@ -191,9 +191,27 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .text("\n{mod=bold;fg=yellow Name:} Oscar Forner Martinez\n\n\
                        {mod=bold;fg=yellow Date of Birth:} 24/03/1988\n\n\
                        {mod=bold;fg=yellow Nationality:} Spanish\n\n\
-                       {mod=bold;fg=yellow Permanent Location:} London UK\n\n\
+                       {mod=bold;fg=yellow Location:} London UK\n\n\
+                       {mod=bold;fg=yellow Open to relocation withing the E.U.}\n\n\
                       ")
                 .render(t, &chunks[0]);
+                Paragraph::default()
+                .block(Block::default()
+                    .borders(Borders::ALL)
+                    .title("About me")
+                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
+                .wrap(true)
+                .text("\nI am a Software Engineer interested in {mod=bold Backend development} and {mod=bold Systems Programming}.\n\n\
+                       I am a regular attendee of the {mod=bold C++} and {mod=bold Go} MeetUps in London.\n\n\
+                       I play {mod=bold handball} at {mod=bold national level} for the {mod=bold Chelsea Team} in London.\n\n\
+                       I enjoy playing all sorts of {mod=bold board games}, like {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
+                      ")
+                .render(t, &chunks[1]);
+            });
+            Group::default()
+            .direction(Direction::Horizontal)
+            .sizes(&[Size::Percent(50), Size::Percent(50)])
+            .render(t, &chunks[1], |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -204,12 +222,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow Catalan:} Native\n\n\
                        {mod=bold;fg=yellow English:} Fluent\n\n\
                       ")
-                .render(t, &chunks[1]);
-            });
-            Group::default()
-            .direction(Direction::Horizontal)
-            .sizes(&[Size::Percent(50), Size::Percent(50)])
-            .render(t, &chunks[1], |t, chunks| {
+                .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -223,18 +236,6 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow GitHub:} https://github.com/maitesin\n\n\
                        {mod=bold;fg=yellow LinkedIn:} http://linkedin.com/in/oscarforner\n\n\
                       ")
-                .render(t, &chunks[0]);
-                Paragraph::default()
-                .block(Block::default()
-                    .borders(Borders::ALL)
-                    .title("About me")
-                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
-                .wrap(true)
-                .text("\nI am a Software Engineer interested in {mod=bold Systems Programming} like {mod=bold Compilers} and {mod=bold Operating Systems}.\n\n\
-                       I am a regular attendee of the {mod=bold C++}, {mod=bold Rust} and {mod=bold Go} MeetUps in London.\n\n\
-                       I play {mod=bold handball} for the {mod=bold Chelsea Team} in London.\n\n\
-                       I enjoy playing all sorts of {mod=bold board games}, like {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
-                      ")
                 .render(t, &chunks[1]);
             });
         });
@@ -243,7 +244,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
 fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
-        .sizes(&[Size::Percent(60), Size::Percent(40)])
+        .sizes(&[Size::Percent(35), Size::Percent(35), Size::Percent(30)])
         .render(t, area, |t, chunks| {
             Block::default()
                 .borders(Borders::ALL)
@@ -265,13 +266,13 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(90)
                     .render(t, &chunks[0]);
                 Gauge::default()
-                    .block(Block::default().title("C:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Go:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("80 / 100"))
-                    .percent(80)
+                    .label(&format!("85 / 100"))
+                    .percent(85)
                     .render(t, &chunks[1]);
                 Gauge::default()
                     .block(Block::default().title("Python:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -283,63 +284,100 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(80)
                     .render(t, &chunks[2]);
                 Gauge::default()
-                    .block(Block::default().title("Bash:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .style(Style::default()
-                            .fg(Color::Magenta)
-                            .bg(Color::Black)
-                            .modifier(Modifier::Italic))
-                    .label(&format!("75 / 100"))
-                    .percent(75)
-                    .render(t, &chunks[3]);
-                Gauge::default()
-                    .block(Block::default().title("Go:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("C:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
                     .label(&format!("70 / 100"))
-                    .percent(60)
-                    .render(t, &chunks[4]);
+                    .percent(70)
+                    .render(t, &chunks[3]);
+            });
+            Block::default()
+                .borders(Borders::ALL)
+                .title("Operating Systems")
+                .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
+                .render(t, &chunks[1]);
+            Group::default()
+                .direction(Direction::Vertical)
+                .margin(1)
+                .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
+                .render(t, &chunks[1], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("Rust:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("GNU/Linux:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("50 / 100"))
-                    .percent(50)
-                    .render(t, &chunks[5]);
+                    .label(&format!("95 / 100"))
+                    .percent(95)
+                    .render(t, &chunks[0]);
+                Gauge::default()
+                    .block(Block::default().title("FreeBSD:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .style(Style::default()
+                            .fg(Color::Magenta)
+                            .bg(Color::Black)
+                            .modifier(Modifier::Italic))
+                    .label(&format!("80 / 100"))
+                    .percent(80)
+                    .render(t, &chunks[1]);
+                Gauge::default()
+                    .block(Block::default().title("OpenBSD:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .style(Style::default()
+                            .fg(Color::Magenta)
+                            .bg(Color::Black)
+                            .modifier(Modifier::Italic))
+                    .label(&format!("70 / 100"))
+                    .percent(70)
+                    .render(t, &chunks[2]);
+                Gauge::default()
+                    .block(Block::default().title("MacOS:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .style(Style::default()
+                            .fg(Color::Magenta)
+                            .bg(Color::Black)
+                            .modifier(Modifier::Italic))
+                    .label(&format!("65 / 100"))
+                    .percent(65)
+                    .render(t, &chunks[3]);
             });
             Block::default()
                 .borders(Borders::ALL)
                 .title("Others")
                 .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
-                .render(t, &chunks[1]);
+                .render(t, &chunks[2]);
             Group::default()
                 .direction(Direction::Horizontal)
                 .margin(1)
-                .sizes(&[Size::Fixed(15),Size::Fixed(2),Size::Fixed(24),Size::Fixed(2),Size::Fixed(25),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2)])
-                .render(t, &chunks[1], |t, chunks| {
+                .sizes(&[Size::Fixed(2), Size::Fixed(18),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(13),Size::Fixed(2),Size::Fixed(19),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2)])
+                .render(t, &chunks[2], |t, chunks| {
+                    SelectableList::default()
+                        .block(Block::default().borders(Borders::ALL).title("Orchestration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["Kubernetes", "Docker Compose", "Helm"])
+                        .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Make", "CMake", "Ninja", "Waf", "Meson", "Gradle"])
-                        .render(t, &chunks[0]);
+                        .items(&vec!["CMake", "Meson", "Make", "Ninja"])
+                        .render(t, &chunks[3]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Continuous Integration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Gitlab CI", "Travis", "Jenkins"])
-                        .render(t, &chunks[2]);
+                        .block(Block::default().borders(Borders::ALL).title("CI/CD").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["Gitlab CI", "Jenkins", "Bamboo", "Travis"])
+                        .render(t, &chunks[5]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Static/Dynamic Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Clang-sanitizer", "Coverity", "Perf", "Valgrind"])
-                        .render(t, &chunks[4]);
+                        .block(Block::default().borders(Borders::ALL).title("Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["Golint", "Go vet", "Clang-sanitizer", "Coverity", "Perf", "Valgrind"])
+                        .render(t, &chunks[7]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Unit Test").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Google Test", "Google Mock", "Unity", "FFF"])
-                        .render(t, &chunks[6]);
+                        .block(Block::default().borders(Borders::ALL).title("Databases").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["MongoDB", "PostgreSQL", "CockroachDB", "MariaDB", "SQLite", "MySQL"])
+                        .render(t, &chunks[9]);
+                    SelectableList::default()
+                        .block(Block::default().borders(Borders::ALL).title("Message Broker").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["RabbitMQ", "Kafka"])
+                        .render(t, &chunks[11]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Tools").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["Cling", "Clang-tidy", "Clang-format", "Ctags", "Cscope", "Mozilla rr"])
-                        .render(t, &chunks[8]);
+                        .render(t, &chunks[13]);
             });
     });
 }
