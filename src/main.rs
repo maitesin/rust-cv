@@ -48,7 +48,7 @@ fn main() {
     let mut app = App {
         size: Rect::default(),
         tabs: MyTabs {
-            titles: vec!["Welcome", "Personal", "Skills", "Experience", "Studies", "Looking For"],
+            titles: vec!["Welcome", "Personal", "Skills", "Experience", "Courses", "Looking For"],
             selection: 0,
         }
     };
@@ -192,7 +192,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow Date of Birth:} 24/03/1988\n\n\
                        {mod=bold;fg=yellow Nationality:} Spanish\n\n\
                        {mod=bold;fg=yellow Location:} London UK\n\n\
-                       {mod=bold;fg=yellow Open to relocation withing the E.U.}\n\n\
+                       {mod=bold;fg=yellow Open to relocation within the E.U.}\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
@@ -210,7 +210,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
             });
             Group::default()
             .direction(Direction::Horizontal)
-            .sizes(&[Size::Percent(50), Size::Percent(50)])
+            .sizes(&[Size::Percent(20), Size::Percent(45), Size::Percent(35)])
             .render(t, &chunks[1], |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
@@ -226,6 +226,20 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
+                    .title("Studies")
+                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
+                .wrap(true)
+                .text("\n{mod=bold;fg=yellow 2010 - 2013: Bachelor of Engineering in Computer Science}\n\
+                        Advanced Data Structures, Compilers and Interpreters,\n\
+                        Advanced Operating Systems, and Distributed Systems.\n\n\
+                       {mod=bold;fg=yellow 2006 - 2010: Associate Degree in Computer Science}\n\
+                        Operating Systems, Real Time Operating Systems and\n\
+                        Embedded Systems.\n\n\
+                      ")
+                .render(t, &chunks[1]);
+                Paragraph::default()
+                .block(Block::default()
+                    .borders(Borders::ALL)
                     .title("Contact")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
@@ -236,7 +250,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow GitHub:} https://github.com/maitesin\n\n\
                        {mod=bold;fg=yellow LinkedIn:} http://linkedin.com/in/oscarforner\n\n\
                       ")
-                .render(t, &chunks[1]);
+                .render(t, &chunks[2]);
             });
         });
 }
@@ -348,7 +362,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
             Group::default()
                 .direction(Direction::Horizontal)
                 .margin(1)
-                .sizes(&[Size::Fixed(2), Size::Fixed(18),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(13),Size::Fixed(2),Size::Fixed(19),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2)])
+                .sizes(&[Size::Fixed(2), Size::Fixed(18),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(13),Size::Fixed(2),Size::Fixed(19),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2),Size::Fixed(17),Size::Fixed(2)])
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Orchestration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -364,19 +378,19 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[5]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Golint", "Go vet", "Clang-sanitizer", "Coverity", "Perf", "Valgrind"])
+                        .items(&vec!["Golint", "Go vet", "Clang-sanitizer", "Perf", "Valgrind"])
                         .render(t, &chunks[7]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Databases").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["MongoDB", "PostgreSQL", "CockroachDB", "MariaDB", "SQLite", "MySQL"])
+                        .items(&vec!["MongoDB", "PostgreSQL", "SQLite", "CockroachDB", "MariaDB", "MySQL"])
                         .render(t, &chunks[9]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Message Broker").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                         .items(&vec!["RabbitMQ", "Kafka"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Tools").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Cling", "Clang-tidy", "Clang-format", "Ctags", "Cscope", "Mozilla rr"])
+                        .block(Block::default().borders(Borders::ALL).title("Hypervisors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["KVM", "VirtualBox", "VMWare", "OpenBSD's VMM"])
                         .render(t, &chunks[13]);
             });
     });
@@ -385,19 +399,31 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
 fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
-        .sizes(&[Size::Percent(30), Size::Percent(30),Size::Percent(20), Size::Percent(19),Size::Fixed(1)])
+        .sizes(&[Size::Percent(30), Size::Percent(30),Size::Percent(20), Size::Percent(20)])
         .render(t, area, |t, chunks| {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2016 - Present: Software Engineer at VCA Technology")
+                    .title("2018 - Present: Senior Software Engineer at GlobalSign")
+                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
+                .wrap(true)
+                .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
+                       {mod=bold;fg=yellow Kubernetes prototype:} Implemented a prototype of the system used in production to test the feasibility of a future migration.\n\n\
+                       {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I devel-
+oped an static analysis tool to enforce the code style used in the company.\n\n\
+                      ")
+                .render(t, &chunks[0]);
+                Paragraph::default()
+                .block(Block::default()
+                    .borders(Borders::ALL)
+                    .title("2016 - 2018: Software Engineer at VCA Technology")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow Network library:} Allows the user to interact with Boost ASIO through the std::stream interface.\n\n\
                        {mod=bold;fg=yellow Tools:} Improve the toolchain used internally to allow the usage of clang-tidy for the linting of our code. Another tool allows to switch between several versions of the toolchain without having to change the environment.\n\n\
                        {mod=bold;fg=yellow Backend development:} Several activities regarding the extension and implementation of new features in the backend of the product such as Authentication and GStreamer sinks.\n\n\
                       ")
-                .render(t, &chunks[0]);
+                .render(t, &chunks[1]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -408,7 +434,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow Dataflow analysis of code:} Checks the complexity of methods, pointer problems, memory handling, etc.\n\n\
                        Took over two projects to refactor, maintain and add new features.\n\n\
                       ")
-                .render(t, &chunks[1]);
+                .render(t, &chunks[2]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -418,16 +444,6 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .text("\n{mod=bold;fg=yellow RESTful service:} Allows  users to query for information about complexes in the database.\n\n\
                        {mod=bold;fg=yellow Cluster algorithm:} Developed a new algorithm to cluster biological information from proteins.\n\n\
                       ")
-                .render(t, &chunks[2]);
-                Paragraph::default()
-                .block(Block::default()
-                    .borders(Borders::ALL)
-                    .title("2013 - Present: Open Source")
-                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
-                .wrap(true)
-                .text("\n{mod=bold;fg=yellow Prefix Tree Comparison:} Compare performance for different {mod=bold Trie}, {mod=bold Ternary Search Tree} and {mod=bold Radix Tree}.\n\n\
-                       {mod=bold;fg=yellow ARM C Compiler (ACC):} I am creating a {mod=bold self-hosting compiler} for {mod=bold C} in the {mod=bold ARM} architecture.\n\n\
-                      ")
                 .render(t, &chunks[3]);
     });
 }
@@ -435,88 +451,57 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
 fn draw_education(t: &mut Terminal<RawBackend>, area: &Rect) {
     Group::default()
         .direction(Direction::Vertical)
-        .sizes(&[Size::Percent(35), Size::Percent(65)])
+        .margin(1)
+        .sizes(&[Size::Percent(18), Size::Percent(18),Size::Percent(19), Size::Percent(15),Size::Percent(15),Size::Percent(15)])
         .render(t, area, |t, chunks| {
-                Block::default()
-                    .borders(Borders::ALL)
-                    .title("Education")
-                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
-                    .render(t, &chunks[0]);
-                Group::default()
-                    .direction(Direction::Vertical)
-                    .margin(1)
-                    .sizes(&[Size::Percent(50), Size::Percent(50)])
-                    .render(t, &chunks[0], |t, chunks| {
-                        Paragraph::default()
-                        .block(Block::default()
-                            .borders(Borders::ALL)
-                            .title("2010 - 2013: Bachelor of Engineering in Computer Science")
-                            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .wrap(true)
-                        .text("\nAdvanced Data Structures, Compilers and Interpreters, Advanced Operating Systems, and Distributed Systems.\n\n\
-                            ")
-                        .render(t, &chunks[0]);
-                        Paragraph::default()
-                        .block(Block::default()
-                            .borders(Borders::ALL)
-                            .title("2006 - 2010: Associate Degree in Computer Science")
-                            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .wrap(true)
-                        .text("\nOperating Systems, Real Time Operating Systems and Embedded Systems.\n\n\
-                            ")
-                        .render(t, &chunks[1]);
-                });
-                Block::default()
-                    .borders(Borders::ALL)
-                    .title("Courses")
-                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
-                    .render(t, &chunks[1]);
-                Group::default()
-                    .direction(Direction::Vertical)
-                    .margin(1)
-                    .sizes(&[Size::Percent(20), Size::Percent(20),Size::Percent(20), Size::Percent(20),Size::Percent(20)])
-                    .render(t, &chunks[1], |t, chunks| {
-                    Paragraph::default()
-                    .block(Block::default()
-                        .borders(Borders::ALL)
-                        .title("LFD331: Developing Linux Device Drivers (from Linux Foundation) - April 2016")
-                        .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .wrap(true)
-                    .text("\nLearnt about the different Linux device drivers, APIs and methods through which devices interface with the kernel.")
-                    .render(t, &chunks[0]);
-                    Paragraph::default()
-                    .block(Block::default()
-                        .borders(Borders::ALL)
-                        .title("LFD320: Linux Kernel Internals and Debugging (from Linux Foundation) - March 2016")
-                        .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .wrap(true)
-                    .text("\nLearnt how Linux is architected, the basic methods for developing on the kernel, and how to work with the community.")
-                    .render(t, &chunks[1]);
-                    Paragraph::default()
-                    .block(Block::default()
-                        .borders(Borders::ALL)
-                        .title("Agile for Developers (from Accelebrate) - August 2015")
-                        .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .wrap(true)
-                    .text("\nTeaches intermediate and advanced object-oriented developers the practices of Agile and Scrum.")
-                    .render(t, &chunks[2]);
-                    Paragraph::default()
-                    .block(Block::default()
-                        .borders(Borders::ALL)
-                        .title("Algorithms, Part II (from Coursera) - November 2014")
-                        .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .wrap(true)
-                    .text("\nFocuses on graph, and string processing algorithms.")
-                    .render(t, &chunks[3]);
-                    Paragraph::default()
-                    .block(Block::default()
-                        .borders(Borders::ALL)
-                        .title("Algorithms, Part I (from Coursera) - September 2014")
-                        .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .wrap(true)
-                    .text("\nCovers elementary data structures, sorting, and searching algorithms.")
-                    .render(t, &chunks[4]);
-                });
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("LFS258: Kubernetes Fundamentals (from Linux Foundation) - August 2019")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nLearnt how to setup, mantain and use a Kubernetes cluster, including how to deploy a containerized application and manipulating resources via the API.")
+        .render(t, &chunks[0]);
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("LFD331: Developing Linux Device Drivers (from Linux Foundation) - April 2016")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nLearnt about the different Linux device drivers, APIs and methods through which devices interface with the kernel.")
+        .render(t, &chunks[1]);
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("LFD320: Linux Kernel Internals and Debugging (from Linux Foundation) - March 2016")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nLearnt how Linux is architected, the basic methods for developing on the kernel, and how to work with the community.")
+        .render(t, &chunks[2]);
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("Agile for Developers (from Accelebrate) - August 2015")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nTeaches intermediate and advanced object-oriented developers the practices of Agile and Scrum.")
+        .render(t, &chunks[3]);
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("Algorithms, Part II (from Coursera) - November 2014")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nFocuses on graph, and string processing algorithms.")
+        .render(t, &chunks[4]);
+        Paragraph::default()
+        .block(Block::default()
+            .borders(Borders::ALL)
+            .title("Algorithms, Part I (from Coursera) - September 2014")
+            .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+        .wrap(true)
+        .text("\nCovers elementary data structures, sorting, and searching algorithms.")
+        .render(t, &chunks[5]);
     });
 }
 
@@ -538,12 +523,12 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .text("\n{mod=bold;fg=yellow I am currently looking for new opportunities}\n\n\n\
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
+                           \t* Design, develop and maintain a high performance and reliable systems.\n\
                            \t* Create and integrate APIs to expose and extend the functionality.\n\
-                           \t* Create and improve the tools used during the development.\n\
+                           \t* Create and improve the tools used during the development process.\n\
                            \t* Work in the internals of Operating Systems such as GNU/Linux and FreeBSD.\n\
                            \t* Work on compilers and/or interpreters and designing programming languages.\n\
-                           \t* Contribute to Open Source software.\n\
-                           \t* Design, develop and maintain a high performance and reliable system.\
+                           \t* Contribute to Open Source software.\
                            ")
                     .render(t, &chunks[1]);
                 });
