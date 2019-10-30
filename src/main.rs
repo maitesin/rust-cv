@@ -409,8 +409,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
                        {mod=bold;fg=yellow Kubernetes prototype:} Implemented a prototype of the system used in production to test the feasibility of a future migration.\n\n\
-                       {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I devel-
-oped an static analysis tool to enforce the code style used in the company.\n\n\
+                       {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I developed an static analysis tool to enforce the code style used in the company.\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
