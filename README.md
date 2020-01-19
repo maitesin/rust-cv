@@ -13,8 +13,8 @@ You can run it locally with `docker run -it maitesin/resume`
 ## How to build the application to be statically linked
 
 ```
-rustup target add i686-unknown-linux-musl
-cargo build --target i686-unknown-linux-musl --release
+rustup target add i686-linux-musl
+cargo build --target i686-linux-musl --release
 ```
 
 ## Build the Docker image
