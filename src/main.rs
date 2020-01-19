@@ -366,7 +366,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Orchestration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Kubernetes", "Docker Compose", "Helm"])
+                        .items(&vec!["Kubernetes", "Docker Compose", "Heroku", "GKE"])
                         .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
