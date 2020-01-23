@@ -271,13 +271,13 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[0], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("C++ (11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Python").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("90 / 100"))
-                    .percent(90)
+                    .label(&format!("95 / 100"))
+                    .percent(95)
                     .render(t, &chunks[0]);
                 Gauge::default()
                     .block(Block::default().title("Go:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -289,7 +289,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(85)
                     .render(t, &chunks[1]);
                 Gauge::default()
-                    .block(Block::default().title("Python:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("C++(11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -315,7 +315,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
             Group::default()
                 .direction(Direction::Vertical)
                 .margin(1)
-                .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
+                .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[1], |t, chunks| {
                 Gauge::default()
                     .block(Block::default().title("GNU/Linux:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -344,15 +344,6 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .label(&format!("70 / 100"))
                     .percent(70)
                     .render(t, &chunks[2]);
-                Gauge::default()
-                    .block(Block::default().title("MacOS:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .style(Style::default()
-                            .fg(Color::Magenta)
-                            .bg(Color::Black)
-                            .modifier(Modifier::Italic))
-                    .label(&format!("65 / 100"))
-                    .percent(65)
-                    .render(t, &chunks[3]);
             });
             Block::default()
                 .borders(Borders::ALL)
