@@ -160,7 +160,7 @@ fn draw_welcome(t: &mut Terminal<RawBackend>, area: &Rect) {
                     Paragraph::default()
                     .block(Block::default()
                         .borders(Borders::ALL)
-                        .title("Welcome to Oscar Forner's Curriculum Vitae")
+                        .title("Welcome to Marko Dujmovic Curriculum Vitae")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
                     .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →}  to move between the tabs.\n\n\
@@ -188,10 +188,10 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("Information")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Name:} Oscar Forner Martinez\n\n\
-                       {mod=bold;fg=yellow Date of Birth:} 24/03/1988\n\n\
-                       {mod=bold;fg=yellow Nationality:} Spanish\n\n\
-                       {mod=bold;fg=yellow Location:} London UK\n\n\
+                .text("\n{mod=bold;fg=yellow Name:} Marko Dujmovic\n\n\
+                       {mod=bold;fg=yellow Date of Birth:} 25/03/1990\n\n\
+                       {mod=bold;fg=yellow Nationality:} Croatian\n\n\
+                       {mod=bold;fg=yellow Location:} Zagreb CRO\n\n\
                        {mod=bold;fg=yellow Open to relocation within the E.U.}\n\n\
                       ")
                 .render(t, &chunks[0]);
@@ -201,10 +201,11 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("About me")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\nI am a Software Engineer interested in {mod=bold Backend development} and {mod=bold Systems Programming}.\n\n\
-                       I am a regular attendee of the {mod=bold C++} and {mod=bold Go} MeetUps in London.\n\n\
-                       I play {mod=bold handball} at {mod=bold national level} for the {mod=bold Chelsea Team} in London.\n\n\
-                       I enjoy playing all sorts of {mod=bold board games}, like {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
+                .text("\nI am a AWS Soulutions Architect interested in {mod=bold Infrastructure Architecting} and {mod=bold Systems Automation}.\n\n\
+                       I am a regular attendee of the {mod=bold AWS} and {mod=bold Go} MeetUps Online.\n\n\
+                       I ride {mod=bold Cool Bikes} at {mod=bold Flying level} and making my own {mod=bold Sounds}.\n\n\
+                       I enjoy programing a complete {mod=bold Live Show Production} for {mod=bold Samarcanda Entertainment} in Croatia.\n\n\
+                       A big fan of {mod=bold Star Wars} and {mod=bold Meeting Humans} lover.\n\n\
                       ")
                 .render(t, &chunks[1]);
             });
@@ -218,23 +219,24 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("Languages")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Spanish:} Native\n\n\
-                       {mod=bold;fg=yellow Catalan:} Native\n\n\
+                .text("\n{mod=bold;fg=yellow Croatian:} Native\n\n\
+                       {mod=bold;fg=yellow German:} Native\n\n\
                        {mod=bold;fg=yellow English:} Fluent\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("Studies")
+                    .title("Education")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow 2010 - 2013: Bachelor of Engineering in Computer Science}\n\
-                        Advanced Data Structures, Compilers and Interpreters,\n\
-                        Advanced Operating Systems, and Distributed Systems.\n\n\
-                       {mod=bold;fg=yellow 2006 - 2010: Associate Degree in Computer Science}\n\
-                        Operating Systems, Real Time Operating Systems and\n\
-                        Embedded Systems.\n\n\
+                .text("\n{mod=bold;fg=yellow Harvard University - Computer Science (50)}\n\
+                        abstraction, algorithms, data structures,\n\
+                        encapsulation, resource management, security,\n\
+                        software engineering, and web development...\n\
+                        Familiarity in a number of languages, including\n\
+                        C, Python, SQL, and JavaScript plus CSS and HTML.\n\n\
+
                       ")
                 .render(t, &chunks[1]);
                 Paragraph::default()
@@ -243,12 +245,10 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("Contact")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Email:} oscar.forner.martinez@gmail.com\n\n\
-                       {mod=bold;fg=yellow Phone:} +44 (0) 7596944383\n\n\
-                       {mod=bold;fg=yellow Website:} https://oscarforner.com/\n\n\
-                       {mod=bold;fg=yellow Twitter:} https://twitter.com/oscar_forner\n\n\
-                       {mod=bold;fg=yellow GitHub:} https://github.com/maitesin\n\n\
-                       {mod=bold;fg=yellow LinkedIn:} http://linkedin.com/in/oscarforner\n\n\
+                .text("\n{mod=bold;fg=yellow Email:} marko.dujmovic@yahoo.com\n\n\
+                       {mod=bold;fg=yellow Phone:} +385 (0) 919542289\n\n\
+                       {mod=bold;fg=yellow Website:} SOON!\n\n\
+                       {mod=bold;fg=yellow LinkedIn:} https://bit.ly/37Imv5x\n\n\
                       ")
                 .render(t, &chunks[2]);
             });
@@ -262,7 +262,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
         .render(t, area, |t, chunks| {
             Block::default()
                 .borders(Borders::ALL)
-                .title("Programming Languages")
+                .title("Tech Stack")
                 .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                 .render(t, &chunks[0]);
             Group::default()
@@ -271,25 +271,25 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[0], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("Python").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                    .style(Style::default()
-                            .fg(Color::Magenta)
-                            .bg(Color::Black)
-                            .modifier(Modifier::Italic))
-                    .label(&format!("95 / 100"))
-                    .percent(95)
-                    .render(t, &chunks[0]);
-                Gauge::default()
-                    .block(Block::default().title("Go:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("AWS").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
                     .label(&format!("85 / 100"))
                     .percent(85)
+                    .render(t, &chunks[0]);
+                Gauge::default()
+                    .block(Block::default().title("Terraform").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .style(Style::default()
+                            .fg(Color::Magenta)
+                            .bg(Color::Black)
+                            .modifier(Modifier::Italic))
+                    .label(&format!("80 / 100"))
+                    .percent(80)
                     .render(t, &chunks[1]);
                 Gauge::default()
-                    .block(Block::default().title("C++(11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Bash").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -298,13 +298,22 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(80)
                     .render(t, &chunks[2]);
                 Gauge::default()
-                    .block(Block::default().title("C:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Docker").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("70 / 100"))
-                    .percent(70)
+                    .label(&format!("75 / 100"))
+                    .percent(75)
+                    .render(t, &chunks[3]);
+                Gauge::default()
+                    .block(Block::default().title("Kubernetes(EKS)").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .style(Style::default()
+                            .fg(Color::Magenta)
+                            .bg(Color::Black)
+                            .modifier(Modifier::Italic))
+                    .label(&format!("75 / 100"))
+                    .percent(75)
                     .render(t, &chunks[3]);
             });
             Block::default()
@@ -327,27 +336,27 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(95)
                     .render(t, &chunks[0]);
                 Gauge::default()
-                    .block(Block::default().title("FreeBSD:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("MacOS:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("80 / 100"))
-                    .percent(80)
+                    .label(&format!("95 / 100"))
+                    .percent(95)
                     .render(t, &chunks[1]);
                 Gauge::default()
-                    .block(Block::default().title("OpenBSD:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Windows:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("70 / 100"))
-                    .percent(70)
+                    .label(&format!("60 / 100"))
+                    .percent(60)
                     .render(t, &chunks[2]);
             });
             Block::default()
                 .borders(Borders::ALL)
-                .title("Others")
+                .title("Other Skills")
                 .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold))
                 .render(t, &chunks[2]);
             Group::default()
@@ -356,32 +365,32 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2), Size::Fixed(18),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(13),Size::Fixed(2),Size::Fixed(19),Size::Fixed(2),Size::Fixed(15),Size::Fixed(2),Size::Fixed(16),Size::Fixed(2),Size::Fixed(17),Size::Fixed(2)])
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Orchestration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Kubernetes", "Docker Compose", "Heroku", "GKE"])
+                        .block(Block::default().borders(Borders::ALL).title("Mind").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["Architectural Thinking", "Analitical Thinking", "Responsiveness", "Cominication", "Problem Solving"])
                         .render(t, &chunks[1]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["CMake", "Meson", "Make", "Ninja"])
+                        .block(Block::default().borders(Borders::ALL).title("Languages").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["Python", "Rust", "Lua"])
                         .render(t, &chunks[3]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("CI/CD").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Gitlab CI", "Jenkins", "Bamboo", "Travis"])
+                        .items(&vec!["Gitlab CI", "Git Runner"])
                         .render(t, &chunks[5]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Golint", "Go vet", "Clang-sanitizer", "Perf", "Valgrind"])
+                        .block(Block::default().borders(Borders::ALL).title("Monitoring").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["CloudWatch"])
                         .render(t, &chunks[7]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Databases").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["MongoDB", "PostgreSQL", "SQLite", "CockroachDB", "MariaDB", "MySQL"])
+                        .items(&vec!["RDS", "MySQL", "Aurora"])
                         .render(t, &chunks[9]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Message Broker").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["RabbitMQ", "Kafka"])
+                        .block(Block::default().borders(Borders::ALL).title("IDE").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["InteliJ", "Visual Studio" , "Doker Hub"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
-                        .block(Block::default().borders(Borders::ALL).title("Hypervisors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["KVM", "VirtualBox", "VMWare", "OpenBSD's VMM"])
+                        .block(Block::default().borders(Borders::ALL).title("Honors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                        .items(&vec!["AWS Feedback Ninja", "Best Employee 2019", "Best Employee 2015", "Bike Park Demonstration", "1st Place in Swimming Competition", "Design Award"])
                         .render(t, &chunks[13]);
             });
     });
@@ -395,7 +404,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2018 - Present: Senior Software Engineer at GlobalSign")
+                    .title("2019 - 2020: DevOps Engineer at Appon GmbH / d.o.o.")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
