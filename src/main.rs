@@ -276,8 +276,8 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("85 / 100"))
-                    .percent(85)
+                    .label(&format!("90 / 100"))
+                    .percent(90)
                     .render(t, &chunks[0]);
                 Gauge::default()
                     .block(Block::default().title("Terraform").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -370,7 +370,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Languages").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Python", "", "Rust", "", "Lua"])
+                        .items(&vec!["Bash", "", "Python", "", "Lua"])
                         .render(t, &chunks[3]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("CI/CD").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -386,11 +386,11 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[9]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("IDE").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["InteliJ", "", "Visual Studio", "", "Doker Hub"])
+                        .items(&vec!["InteliJ", "", "Visual Studio", "", "Doker Hub", "", "JIRA", "", "Atlasian"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Honors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Best Employee", "2019", "2015", "", "Bike Park", "Demonstration", "", "1st Place in", "Swimming Competition", "", "Design Award"])
+                        .items(&vec!["Best Employee", "2019", "2015", "", "Bike Park", "Demonstration", "", "1st Place in", "Swimming, Competition", "", "Design Award"])
                         .render(t, &chunks[13]);
             });
     });
@@ -407,7 +407,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("2019 - 2020: DevOps Engineer at Appon GmbH / d.o.o.")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Organisation:} Spiking technologies and resolve impediments as Scrum Master.\n\ Designing and Building Infrastructures as Code by implementing Best 'Practices' and automated Build/Test/Deploy (CICD).\n\n\
+                .text("\n{mod=bold;fg=yellow Organisation:} Spiking technologies and resolve impediments as Scrum Master.\n Designing and Building Infrastructures as Code by implementing Best 'Practices' and automated Build/Test/Deploy (CICD).\n\n\
                        {mod=bold;fg=yellow Terraform:} Infrastructure as Code Refactoring from CloudFormation to Terraform to reduce the number of CF-Stack and better deployment.\n\n\
                        {mod=bold;fg=yellow Others:} Automating CI/CD for Microservices Deployable as Docker Container to Kubernetes(EKS).\n\n\
                        ELB, ASG, EC2, S3, Bastion, KMS, IAM, EBeanstalk, CloudFormation, Terraform, Terragrunt, Ansible, Docker, Kubernetes(EKS), VPC peering, RDS MSQL, Aurora PHP, AWS CLI, Ubuntu, RedHat8, Automation Scripting, Springboot, GitRunner, SSM Parameter Store, Nested Stacks, GitLab, Jira, Confluence, Agile, Scrum Master, Kanban, Documentation, Architecture Design\n\n\
@@ -420,9 +420,9 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow General:} Coaching and of new potential employees.\n\n\
-                 Providing a personal project in quality and innovations for sound and light equipment and the concept of operation together with external associates. Executing technical operation of live show productions and special events in the area of a international leading tourist destination.\n\Show programming, recording, live sound, video recording, video editing, 3D mapping, multiscreen projection, PR, consulting.\n\n\
-                       {mod=bold;fg=yellow Nice:} Guinness World Records (Zaton Smiley 2015) Nominated for best employee 2015\n\Technical Coach at Sama Academy 2019 Nominated for best employee 2019.\n\n\
-                       {mod=bold;fg=yellow Location:} Multiple Locations in Europa.\n\n\
+                 Providing a personal project in quality and innovations for sound and light equipment and the concept of operation together with external associates.\n Executing technical operation of live show productions and special events in the area of a international leading tourist destination.\n Show programming, recording, live sound, video recording, video editing, 3D mapping, multiscreen projection, PR, consulting.\n\n\
+                       {mod=bold;fg=yellow Nice:} Guinness World Records (Zaton Smiley 2015) Nominated for best employee 2015\n Technical Coach at Sama Academy 2019 Nominated for best employee 2019.\n\n\
+                       {mod=bold;fg=yellow Location:} Multiple Locations in Europe.\n\n\
                       ")
                 .render(t, &chunks[1]);
                 Paragraph::default()
