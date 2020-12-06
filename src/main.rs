@@ -202,8 +202,8 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\nI am a {mod=bold DevOps Engineer} interested in {mod=bold Architecting} and {mod=bold Infrastructure Automation}.\n\n\
-                       I am a regular attendee of the {mod=bold AWS} and {mod=bold Go} MeetUps Online.\n\n\
-                       I ride {mod=bold Cool Bikes} at {mod=bold Flying level} and making my own {mod=bold Sounds}.\n\n\
+                       I am a regular attendee of the {mod=bold AWS events} and cool {mod=bold Social Networks} for research.\n\n\
+                       I make my own {mod=bold Sound} at {mod=bold Organic Level} and ride a cool {mod=bold bike}.\n\n\
                        I enjoy programing a complete {mod=bold Live Show Production} for {mod=bold Samarcanda Entertainment} in Croatia.\n\n\
                        A big fan of {mod=bold Star Wars} and {mod=bold Human} lover.\n\n\
                       ")
@@ -410,7 +410,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .text("\n{mod=bold;fg=yellow Organisation:} Spiking technologies and resolve impediments as Scrum Master.\n Designing and Building Infrastructures as Code by implementing Best 'Practices' and automated Build/Test/Deploy (CICD).\n\n\
                        {mod=bold;fg=yellow Terraform:} Infrastructure as Code Refactoring from CloudFormation to Terraform to reduce the number of CF-Stack and better deployment.\n\n\
                        {mod=bold;fg=yellow Others:} Automating CI/CD for Microservices Deployable as Docker Container to Kubernetes(EKS).\n\n\
-                       ELB, ASG, EC2, S3, Bastion, KMS, IAM, EBeanstalk, CloudFormation, Terraform, Terragrunt, Ansible, Docker, Kubernetes(EKS), VPC peering, RDS MSQL, Aurora PHP, AWS CLI, Ubuntu, RedHat8, Automation Scripting, Springboot, GitRunner, SSM Parameter Store, Nested Stacks, GitLab, Jira, Confluence, Agile, Scrum Master, Kanban, Documentation, Architecture Design\n\n\
+                       ELB, ASG, EC2, S3, Bastion, KMS, IAM, EBeanstalk, CloudFormation, Terraform, Terragrunt, Docker, Kubernetes(EKS), VPC peering, RDS MSQL, Aurora PHP, AWS CLI, Ubuntu, RedHat8, Automation Scripting, Springboot, GitRunner, SSM Parameter Store, Nested Stacks, GitLab, Jira, Confluence, Agile, Scrum Master, Kanban, Documentation, Architecture Design\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
@@ -431,9 +431,9 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("2018 - 2019: Warehouse Logistics at CNH Industrial GmbH (3rd party employment)")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow General:} Executing orders in a Automotive field of special parts and components for industrial machines..\n\n\
-                       {mod=bold;fg=yellow Quality Management:} Problem Solving alongside with Warehouse Operation System (WOS), Inventory Check and Participating in Quality Management Projects.\n\n\
-                       {mod=bold;fg=yellow Achivement:} Found system mistakes of big values they probably would never find.\n\n\
+                .text("\n{mod=bold;fg=yellow General:} A World-Class Logistic in a Automotive field of special parts and components for industrial machines...\n\n\
+                       {mod=bold;fg=yellow Quality Management:} Problem Solving alongside with Warehouse Operation System (WOS), Inventory Check and Participating in Quality Management Projects. Secure Global Fast-Moving Transport\n\n\
+                       {mod=bold;fg=yellow Achivement:} Found system mistakes of big values(€) they probably would never notice.\n\n\
                       ")
                 .render(t, &chunks[2]);
                 Paragraph::default()
@@ -522,15 +522,23 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\n{mod=bold;fg=yellow I am currently looking for new opportunities}\n\n\n\
+                    .text("\n{mod=bold;fg=yellow I am currently looking for new opportunities as DevOps Engineer}\n\n\n\
+
+
                            My ideal roles involve a combination of the following:\n\n\
-                           \t* Write low level libraries and/or components.\n\
-                           \t* Design, develop and maintain a high performance and reliable systems.\n\
-                           \t* Create and integrate APIs to expose and extend the functionality.\n\
-                           \t* Create and improve the tools used during the development process.\n\
-                           \t* Work in the internals of Operating Systems such as GNU/Linux and FreeBSD.\n\
-                           \t* Work on compilers and/or interpreters and designing programming languages.\n\
-                           \t* Contribute to Open Source software.\
+                           \t* Join a team to biild world-class cloud infrastrucures and be unstopable.\n\
+                           \t* Consulting companies to develop and maintain a high performance and reliable systems.\n\
+                           \t* Create and integrate solutions to extend the functionality.\n\
+                           \t* Improve current systems during the development process.\n\
+                           \t* Work as Scrum Master in DevOps area with focus in AWS.\n\
+                           \t* Participating in migrations and multicloud systems.\n\
+                           \t* Acquire more expirience with Orchestration like Kubernetes and its monitoring.\n\n\n\n\n\
+
+                           Solving technical issues is my nature since my childhood. In the era of no internet,\n\
+                           crafting remote controlled flying objects been no strange ideas.\n\
+                           I am honoured to have to opportunity to apply my unique set of skills to assist your organisation and its clients.\n\n\
+                           This is the way,\n\
+                           Marko Dujmovic
                            ")
                     .render(t, &chunks[1]);
                 });
