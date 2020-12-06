@@ -201,11 +201,11 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("About me")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\nI am a AWS Soulutions Architect interested in {mod=bold Infrastructure Architecting} and {mod=bold Systems Automation}.\n\n\
+                .text("\nI am a {mod=bold DevOps Engineer} interested in {mod=bold Architecting} and {mod=bold Infrastructure Automation}.\n\n\
                        I am a regular attendee of the {mod=bold AWS} and {mod=bold Go} MeetUps Online.\n\n\
                        I ride {mod=bold Cool Bikes} at {mod=bold Flying level} and making my own {mod=bold Sounds}.\n\n\
                        I enjoy programing a complete {mod=bold Live Show Production} for {mod=bold Samarcanda Entertainment} in Croatia.\n\n\
-                       A big fan of {mod=bold Star Wars} and {mod=bold Meeting Humans} lover.\n\n\
+                       A big fan of {mod=bold Star Wars} and {mod=bold Human} lover.\n\n\
                       ")
                 .render(t, &chunks[1]);
             });
@@ -312,8 +312,8 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                             .fg(Color::Magenta)
                             .bg(Color::Black)
                             .modifier(Modifier::Italic))
-                    .label(&format!("75 / 100"))
-                    .percent(75)
+                    .label(&format!("60 / 100"))
+                    .percent(60)
                     .render(t, &chunks[3]);
             });
             Block::default()
@@ -327,7 +327,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[1], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("GNU/Linux:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("GNU/Linux").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -336,7 +336,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(95)
                     .render(t, &chunks[0]);
                 Gauge::default()
-                    .block(Block::default().title("MacOS:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("MacOS").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -345,7 +345,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(95)
                     .render(t, &chunks[1]);
                 Gauge::default()
-                    .block(Block::default().title("Windows:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Windows").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -366,15 +366,15 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Mind").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Architectural Thinking", "Analitical Thinking", "Responsiveness", "Cominication", "Problem Solving"])
+                        .items(&vec!["Architectural", "Thinking", "", "Analicital", "", "Responsiveness", "", "Cominication", "", "Problem Solving"])
                         .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Languages").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Python", "Rust", "Lua"])
+                        .items(&vec!["Python", "", "Rust", "", "Lua"])
                         .render(t, &chunks[3]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("CI/CD").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Gitlab CI", "Git Runner"])
+                        .items(&vec!["Gitlab CI", "", "Git Runner"])
                         .render(t, &chunks[5]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Monitoring").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -382,15 +382,15 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[7]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Databases").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["RDS", "MySQL", "Aurora"])
+                        .items(&vec!["RDS", "", "MySQL", "", "Aurora"])
                         .render(t, &chunks[9]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("IDE").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["InteliJ", "Visual Studio" , "Doker Hub"])
+                        .items(&vec!["InteliJ", "", "Visual Studio", "", "Doker Hub"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Honors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["AWS Feedback Ninja", "Best Employee 2019", "Best Employee 2015", "Bike Park Demonstration", "1st Place in Swimming Competition", "Design Award"])
+                        .items(&vec!["Best Employee", "2019", "2015", "", "Bike Park", "Demonstration", "", "1st Place in", "Swimming Competition", "", "Design Award"])
                         .render(t, &chunks[13]);
             });
     });
@@ -407,41 +407,44 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("2019 - 2020: DevOps Engineer at Appon GmbH / d.o.o.")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
-                       {mod=bold;fg=yellow Kubernetes prototype:} Implemented a prototype of the system used in production to test the feasibility of a future migration.\n\n\
-                       {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I developed an static analysis tool to enforce the code style used in the company.\n\n\
+                .text("\n{mod=bold;fg=yellow Organisation:} Spiking technologies and resolve impediments as Scrum Master.\n\ Designing and Building Infrastructures as Code by implementing Best 'Practices' and automated Build/Test/Deploy (CICD).\n\n\
+                       {mod=bold;fg=yellow Terraform:} Infrastructure as Code Refactoring from CloudFormation to Terraform to reduce the number of CF-Stack and better deployment.\n\n\
+                       {mod=bold;fg=yellow Others:} Automating CI/CD for Microservices Deployable as Docker Container to Kubernetes(EKS).\n\n\
+                       ELB, ASG, EC2, S3, Bastion, KMS, IAM, EBeanstalk, CloudFormation, Terraform, Terragrunt, Ansible, Docker, Kubernetes(EKS), VPC peering, RDS MSQL, Aurora PHP, AWS CLI, Ubuntu, RedHat8, Automation Scripting, Springboot, GitRunner, SSM Parameter Store, Nested Stacks, GitLab, Jira, Confluence, Agile, Scrum Master, Kanban, Documentation, Architecture Design\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2016 - 2018: Software Engineer at VCA Technology")
+                    .title("2011 - 2020: Tech Executive Produceer at Samarcanda Entertainment, Life Tourism S.A, Self Employed")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Network library:} Allows the user to interact with Boost ASIO through the std::stream interface.\n\n\
-                       {mod=bold;fg=yellow Tools:} Improve the toolchain used internally to allow the usage of clang-tidy for the linting of our code. Another tool allows to switch between several versions of the toolchain without having to change the environment.\n\n\
-                       {mod=bold;fg=yellow Backend development:} Several activities regarding the extension and implementation of new features in the backend of the product such as Authentication and GStreamer sinks.\n\n\
+                .text("\n{mod=bold;fg=yellow General:} Coaching and of new potential employees.\n\n\
+                 Providing a personal project in quality and innovations for sound and light equipment and the concept of operation together with external associates. Executing technical operation of live show productions and special events in the area of a international leading tourist destination.\n\Show programming, recording, live sound, video recording, video editing, 3D mapping, multiscreen projection, PR, consulting.\n\n\
+                       {mod=bold;fg=yellow Nice:} Guinness World Records (Zaton Smiley 2015) Nominated for best employee 2015\n\Technical Coach at Sama Academy 2019 Nominated for best employee 2019.\n\n\
+                       {mod=bold;fg=yellow Location:} Multiple Locations in Europa.\n\n\
                       ")
                 .render(t, &chunks[1]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2015 - 2016: Software Developer at Programming Research")
+                    .title("2018 - 2019: Warehouse Logistics at CNH Industrial GmbH (3rd party employment)")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow Static analysis of code:} Checks if the code has some patterns that have an undefined behaviour, unspecified in the Standard, and/or implementation-defined.\n\n\
-                       {mod=bold;fg=yellow Dataflow analysis of code:} Checks the complexity of methods, pointer problems, memory handling, etc.\n\n\
-                       Took over two projects to refactor, maintain and add new features.\n\n\
+                .text("\n{mod=bold;fg=yellow General:} Executing orders in a Automotive field of special parts and components for industrial machines..\n\n\
+                       {mod=bold;fg=yellow Quality Management:} Problem Solving alongside with Warehouse Operation System (WOS), Inventory Check and Participating in Quality Management Projects.\n\n\
+                       {mod=bold;fg=yellow Achivement:} Found system mistakes of big values they probably would never find.\n\n\
                       ")
                 .render(t, &chunks[2]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2013 - 2015: Software Engineer at European Bioinformatics Institute")
+                    .title("2010 - 2010: Corn Care at BC Institute ")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow RESTful service:} Allows  users to query for information about complexes in the database.\n\n\
-                       {mod=bold;fg=yellow Cluster algorithm:} Developed a new algorithm to cluster biological information from proteins.\n\n\
+                .text("\n{mod=bold;fg=yellow General:} Dying on +40 degree in Sun, snakes and no water.\n\n\
+                       {mod=bold;fg=yellow Decision:} This is not my future...\n\n\
+
                       ")
                 .render(t, &chunks[3]);
     });
@@ -456,50 +459,50 @@ fn draw_education(t: &mut Terminal<RawBackend>, area: &Rect) {
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("LFS258: Kubernetes Fundamentals (from Linux Foundation) - August 2019")
+            .title("AWS Solutions Architect - Associate (from Linux Academy) - March 2020")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nLearnt how to setup, mantain and use a Kubernetes cluster, including how to deploy a containerized application and manipulating resources via the API.")
+        .text("\nLearnt how to setup, mantain and use a various kind of infrastructures, including how to deploy a containerized application and manipulating resources.")
         .render(t, &chunks[0]);
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("LFD331: Developing Linux Device Drivers (from Linux Foundation) - April 2016")
+            .title("SSM Certified SAFe® 4 Scrum Master (from Scaled Agile Framework) - Dezember 2019")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nLearnt about the different Linux device drivers, APIs and methods through which devices interface with the kernel.")
+        .text("\nLearnt about the differenties in Frameworks and the strenght of Agile methodology, especialy using Kanban and their User Stories in Jira.")
         .render(t, &chunks[1]);
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("LFD320: Linux Kernel Internals and Debugging (from Linux Foundation) - March 2016")
+            .title("Linux Networking and Subneting (from Linux Academy) - Dezember 2019")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nLearnt how Linux is architected, the basic methods for developing on the kernel, and how to work with the community.")
+        .text("\nLearnt what OSI Layers and CIDR blocks are, the basic of Subnet masks, Hosts and IP ranges.")
         .render(t, &chunks[2]);
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("Agile for Developers (from Accelebrate) - August 2015")
+            .title("Introduction to Computer Science (from EDX) - August 2015")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nTeaches intermediate and advanced object-oriented developers the practices of Agile and Scrum.")
+        .text("\nLearnt how to think algorithmically and solve problems efficiently.")
         .render(t, &chunks[3]);
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("Algorithms, Part II (from Coursera) - November 2014")
+            .title("Mastering Desing Thinking (from MIT) - in progress")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nFocuses on graph, and string processing algorithms.")
+        .text("\n...501...")
         .render(t, &chunks[4]);
         Paragraph::default()
         .block(Block::default()
             .borders(Borders::ALL)
-            .title("Algorithms, Part I (from Coursera) - September 2014")
+            .title("Live Sound Engineering (from LinkedIn) - September 2018")
             .title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
         .wrap(true)
-        .text("\nCovers elementary data structures, sorting, and searching algorithms.")
+        .text("\nConfirming skills in Live Sound for Live Show Productions.")
         .render(t, &chunks[5]);
     });
 }
