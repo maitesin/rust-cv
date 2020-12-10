@@ -1,13 +1,10 @@
-# Oscar Forner's Curriculum
-[![Build Status](https://travis-ci.org/maitesin/rust-cv.svg?branch=master)](https://travis-ci.org/maitesin/rust-cv)
-[![](https://images.microbadger.com/badges/image/maitesin/resume.svg)](https://microbadger.com/images/maitesin/resume "Get your own image badge on microbadger.com")
-
+# Marko Dujmovic's Curriculum
 
 Rust application that shows my resume in a terminal UI fashion
 
-![gif](https://raw.githubusercontent.com/maitesin/rust-cv/master/cv.gif)
+First you need to build the Docker image with `docker build -t my_resume .`
 
-You can run it locally with `docker run -it maitesin/resume`
+You can run it locally with `docker run -it -p 8000 my_resume` (instead of '8000' you can change port)
 
 
 ## How to build the application to be statically linked
@@ -20,11 +17,9 @@ cargo build --target i686-unknown-linux-musl --release
 ## Build the Docker image
 
 ```
-docker build -t resume .
+docker build -t my_resume .
 docker tag resume maitesin/resume
 docker login
 docker push maitesin/resume
 ```
 
-## Automatically build
-Since the change for multi-stage Dockerfile I set up an automatic build in DockerHub: https://hub.docker.com/r/maitesin/resume
