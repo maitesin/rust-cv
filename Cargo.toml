@@ -1,9 +1,7 @@
 [package]
 name = "rust-cv"
 version = "0.1.0"
-authors = ["Oscar Forner Martinez <oscar.forner.martinez@gmail.com>"]
 description = ""
-keywords = ["cv"]
 license = "BSD-2-Clause"
 
 [dependencies]

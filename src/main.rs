@@ -202,9 +202,9 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\nI am a {mod=bold DevOps Engineer} interested in {mod=bold Architecting} and {mod=bold Infrastructure Automation}.\n\n\
-                       I am a regular attendee of the {mod=bold AWS events} and cool {mod=bold Social Networks} for research.\n\n\
+                       I am a regular attendee of the {mod=bold AWS Events} and cool {mod=bold Social Networks} for research.\n\n\
                        I make my own {mod=bold Sound} at {mod=bold Organic Level} and ride a cool {mod=bold bike}.\n\n\
-                       I enjoy programing a complete {mod=bold Live Show Production} for {mod=bold Samarcanda Entertainment} in Croatia.\n\n\
+                       I enjoy to {mod=bold lead} a complete {mod=bold Live Show Production} for {mod=bold Samarcanda Entertainment} in Croatia.\n\n\
                        A big fan of {mod=bold Star Wars} and {mod=bold Human} lover.\n\n\
                       ")
                 .render(t, &chunks[1]);
@@ -366,7 +366,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Mind").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Architectural", "Thinking", "", "Analicital", "", "Responsiveness", "", "Cominication", "", "Problem Solving"])
+                        .items(&vec!["Architectural", "Thinking", "", "Analycital", "Thinking", "", "Responsiveness", "", "Cominication", "", "Problem Solving"])
                         .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Languages").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -386,11 +386,11 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[9]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("IDE").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["InteliJ", "", "Visual Studio", "", "Doker Hub", "", "JIRA", "", "Atlasian"])
+                        .items(&vec!["InteliJ", "", "Docker Hub", "", "JIRA", "", "Atlassian"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Honors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Best Employee", "2019", "2015", "", "Bike Park", "Demonstration", "", "1st Place in", "Swimming, Competition", "", "Design Award"])
+                        .items(&vec!["Best Employee", "2019", "2015", "", "Bike Park", "Demonstration", "", "1st Place in", "Swimming", "Competition", "", "Design Award"])
                         .render(t, &chunks[13]);
             });
     });
@@ -416,11 +416,11 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2011 - 2020: Tech Executive Produceer at Samarcanda Entertainment, Life Tourism S.A, Self Employed")
+                    .title("2011 - 2020: Tech Executive Produceer at Samarcanda Entertainment, Life Tourism S.A, Self Employed, Contracting")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow General:} Coaching and of new potential employees.\n\n\
-                 Providing a personal project in quality and innovations for sound and light equipment and the concept of operation together with external associates.\n Executing technical operation of live show productions and special events in the area of a international leading tourist destination.\n Show programming, recording, live sound, video recording, video editing, 3D mapping, multiscreen projection, PR, consulting.\n\n\
+                 Providing coaching in quality and innovations for the stage infrastructure and the concept of the AV System to gain high performing Live Production Shows.\n Plan and produce shows alongside optimising the production work-flow in the area of a international leading tourist destination.\n Show programming, live multi-track recording and playback, live video recording and multiscreen projection, video editing, 3D mapping in multiscreen, PR, consulting.\n\n\
                        {mod=bold;fg=yellow Nice:} Guinness World Records (Zaton Smiley 2015) Nominated for best employee 2015\n Technical Coach at Sama Academy 2019 Nominated for best employee 2019.\n\n\
                        {mod=bold;fg=yellow Location:} Multiple Locations in Europe.\n\n\
                       ")
@@ -526,17 +526,16 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
 
 
                            My ideal roles involve a combination of the following:\n\n\
-                           \t* Join a team to biild world-class cloud infrastrucures and be unstopable.\n\
-                           \t* Consulting companies to develop and maintain a high performance and reliable systems.\n\
+                           \t* Join a team to build world-class cloud infrastrucures and be unstopable.\n\
+                           \t* Consulting companies and help to develop and maintain a high performance and reliable systems.\n\
                            \t* Create and integrate solutions to extend the functionality.\n\
                            \t* Improve current systems during the development process.\n\
                            \t* Work as Scrum Master in DevOps area with focus in AWS.\n\
                            \t* Participating in migrations and multicloud systems.\n\
-                           \t* Acquire more expirience with Orchestration like Kubernetes and its monitoring.\n\n\n\n\n\
+                           \t* Acquire more expirience with Orchestration like Kubernetes and its monitoring.\n\n\n\
 
                            Solving technical issues is my nature since my childhood. In the era of no internet,\n\
-                           crafting remote controlled flying objects been no strange ideas.\n\
-                           I am honoured to have to opportunity to apply my unique set of skills to assist your organisation and its clients.\n\n\
+                           crafting remote controlled flying objects been no strange ideas.\n\n\n\
                            This is the way,\n\
                            Marko Dujmovic
                            ")
