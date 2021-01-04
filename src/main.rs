@@ -510,7 +510,8 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .title("What I am looking for?")
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
-                    .text("\n{mod=bold;fg=yellow I am currently looking for new opportunities}\n\n\n\
+                    .text(" \
+                           \n{mod=bold;fg=yellow I am currently NOT looking for new opportunities}\n\n\n \
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
                            \t* Design, develop and maintain a high performance and reliable systems.\n\
