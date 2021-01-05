@@ -144,7 +144,7 @@ fn draw(t: &mut Terminal<RawBackend>, app: &App) -> Result<(), io::Error> {
                 _ => {}
             };
         });
-    try!(t.draw());
+    t.draw()?;
     Ok(())
 }
 
@@ -166,7 +166,7 @@ fn draw_welcome(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .text("\nUse {mod=bold;fg=yellow ←}  and {mod=bold;fg=yellow →}  to move between the tabs.\n\n\
                            Use {mod=bold;fg=yellow q} to exit the application.\n\n\
                            I hope you like it!\n\n\
-                           {mod=bold;fg=yellow **Note:} Optimized resolution of the command line is 120x40 characters.{mod=bold;fg=yellow **}\
+                           {mod=bold;fg=yellow **Note:} Optimized resolution of the command line is 130x40 characters.{mod=bold;fg=yellow **}\
                            ")
                     .render(t, &chunks[1]);
                 });
@@ -191,8 +191,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .text("\n{mod=bold;fg=yellow Name:} Oscar Forner Martinez\n\n\
                        {mod=bold;fg=yellow Date of Birth:} 24/03/1988\n\n\
                        {mod=bold;fg=yellow Nationality:} Spanish\n\n\
-                       {mod=bold;fg=yellow Location:} London UK\n\n\
-                       {mod=bold;fg=yellow Open to relocation within the E.U.}\n\n\
+                       {mod=bold;fg=yellow Location:} Spain\n\n\
                       ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
@@ -202,9 +201,8 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\nI am a Software Engineer interested in {mod=bold Backend development} and {mod=bold Systems Programming}.\n\n\
-                       I am a regular attendee of the {mod=bold C++} and {mod=bold Go} MeetUps in London.\n\n\
-                       I play {mod=bold handball} at {mod=bold national level} for the {mod=bold Chelsea Team} in London.\n\n\
-                       I enjoy playing all sorts of {mod=bold board games}, like {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
+                       I am a regular attendee of the {mod=bold C++} and {mod=bold Go} MeetUps in London (Virtually).\n\n\
+                       I enjoy playing {mod=bold handball} and all sorts of {mod=bold board games}, including {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
                       ")
                 .render(t, &chunks[1]);
             });
@@ -244,7 +242,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow Email:} oscar.forner.martinez@gmail.com\n\n\
-                       {mod=bold;fg=yellow Phone:} +44 (0) 7596944383\n\n\
+                       {mod=bold;fg=yellow Phone:} +34 617 60 60 12\n\n\
                        {mod=bold;fg=yellow Website:} https://oscarforner.com/\n\n\
                        {mod=bold;fg=yellow Twitter:} https://twitter.com/oscar_forner\n\n\
                        {mod=bold;fg=yellow GitHub:} https://github.com/maitesin\n\n\
@@ -271,7 +269,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .sizes(&[Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2),Size::Fixed(2)])
                 .render(t, &chunks[0], |t, chunks| {
                 Gauge::default()
-                    .block(Block::default().title("Python").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Go").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -280,7 +278,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(95)
                     .render(t, &chunks[0]);
                 Gauge::default()
-                    .block(Block::default().title("Go:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("Python:").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -395,14 +393,24 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
-                    .title("2018 - Present: Senior Software Engineer at GlobalSign")
+                    .title("2020 - Present: Lead Software Engineer at Paack")
+                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
+                .wrap(true)
+                .text("\nDuring my time in Paack I have worked in the Warehouse Management System, a new platform to allow parcels to be scanned and assigned to routes in a timely fashion. Moreover, I lead the revamp of the Business Rules Management System, a platform to allow Product People to change the rules applied to deliveries without having to change code. During this rework the whole architecture of the system changed, and a new UI was developed to fulfill the new requirements. I also had to design and implement the migration process for the system to avoid downtime.\n\n\
+                       As part of my role as Lead Software Engineer I mentored several people in my team and I was heavily involved in the hiring process of the company.\n\n\
+                       ")
+                .render(t, &chunks[0]);
+                Paragraph::default()
+                .block(Block::default()
+                    .borders(Borders::ALL)
+                    .title("2018 - 2020: Senior Software Engineer at GlobalSign")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
                 .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
                        {mod=bold;fg=yellow Kubernetes prototype:} Implemented a prototype of the system used in production to test the feasibility of a future migration.\n\n\
                        {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I developed an static analysis tool to enforce the code style used in the company.\n\n\
                       ")
-                .render(t, &chunks[0]);
+                .render(t, &chunks[1]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -413,7 +421,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                        {mod=bold;fg=yellow Tools:} Improve the toolchain used internally to allow the usage of clang-tidy for the linting of our code. Another tool allows to switch between several versions of the toolchain without having to change the environment.\n\n\
                        {mod=bold;fg=yellow Backend development:} Several activities regarding the extension and implementation of new features in the backend of the product such as Authentication and GStreamer sinks.\n\n\
                       ")
-                .render(t, &chunks[1]);
+                .render(t, &chunks[2]);
                 Paragraph::default()
                 .block(Block::default()
                     .borders(Borders::ALL)
@@ -423,16 +431,6 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .text("\n{mod=bold;fg=yellow Static analysis of code:} Checks if the code has some patterns that have an undefined behaviour, unspecified in the Standard, and/or implementation-defined.\n\n\
                        {mod=bold;fg=yellow Dataflow analysis of code:} Checks the complexity of methods, pointer problems, memory handling, etc.\n\n\
                        Took over two projects to refactor, maintain and add new features.\n\n\
-                      ")
-                .render(t, &chunks[2]);
-                Paragraph::default()
-                .block(Block::default()
-                    .borders(Borders::ALL)
-                    .title("2013 - 2015: Software Engineer at European Bioinformatics Institute")
-                    .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
-                .wrap(true)
-                .text("\n{mod=bold;fg=yellow RESTful service:} Allows  users to query for information about complexes in the database.\n\n\
-                       {mod=bold;fg=yellow Cluster algorithm:} Developed a new algorithm to cluster biological information from proteins.\n\n\
                       ")
                 .render(t, &chunks[3]);
     });
