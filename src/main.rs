@@ -200,7 +200,7 @@ fn draw_personal(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("About me")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\nI am a Software Engineer interested in {mod=bold Backend development} and {mod=bold Systems Programming}.\n\n\
+                .text("\nI am a Senior Software Engineer interested in {mod=bold Backend development} and {mod=bold Systems Programming}.\n\n\
                        I am a regular attendee of the {mod=bold C++} and {mod=bold Go} MeetUps in London (Virtually).\n\n\
                        I enjoy playing {mod=bold handball} and all sorts of {mod=bold board games}, including {mod=bold Magic the Gathering}, and {mod=bold videogames}.\n\n\
                       ")
@@ -287,7 +287,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .percent(85)
                     .render(t, &chunks[1]);
                 Gauge::default()
-                    .block(Block::default().title("C++(11/14/17):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
+                    .block(Block::default().title("C++(11/14):").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
                     .style(Style::default()
                             .fg(Color::Magenta)
                             .bg(Color::Black)
@@ -355,7 +355,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                 .render(t, &chunks[2], |t, chunks| {
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Orchestration").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Kubernetes", "Docker Compose", "Heroku", "GKE"])
+                        .items(&vec!["Kubernetes", "Helm", "Istio", "Docker Compose", "Heroku", "GKE"])
                         .render(t, &chunks[1]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Build Systems").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -363,7 +363,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[3]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("CI/CD").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["Gitlab CI", "Jenkins", "Bamboo", "Travis"])
+                        .items(&vec!["Gitlab CI", "Jenkins", "GitHub Actions", "Travis"])
                         .render(t, &chunks[5]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Analysis").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -375,7 +375,7 @@ fn draw_skills(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .render(t, &chunks[9]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Message Broker").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
-                        .items(&vec!["RabbitMQ", "Kafka"])
+                        .items(&vec!["RabbitMQ", "PubSub"])
                         .render(t, &chunks[11]);
                     SelectableList::default()
                         .block(Block::default().borders(Borders::ALL).title("Hypervisors").title_style(Style::default().fg(Color::Yellow).modifier(Modifier::Bold)))
@@ -396,8 +396,8 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("2020 - Present: Lead Software Engineer at Paack")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\nDuring my time in Paack I have worked in the Warehouse Management System, a new platform to allow parcels to be scanned and assigned to routes in a timely fashion. Moreover, I lead the revamp of the Business Rules Management System, a platform to allow Product People to change the rules applied to deliveries without having to change code. During this rework the whole architecture of the system changed, and a new UI was developed to fulfill the new requirements. I also had to design and implement the migration process for the system to avoid downtime.\n\n\
-                       As part of my role as Lead Software Engineer I mentored several people in my team and I was heavily involved in the hiring process of the company.\n\n\
+                .text("\nDuring my time in Paack I have worked in multiple projects, such as **Warehouse Management System**, **Business Rules Engine**, **New Retailer API**, and **Communications Service**. All of them were developed in **Go** using **PostgreSQL** as the database to store the information of the services and they were deployed in **Kubernetes** using **Helm** and **Istio**.\n\n\
+                As part of my role as Lead Software Engineer I mentored several people in my team and I was heavily involved in the hiring process of the company.\n\n\
                        ")
                 .render(t, &chunks[0]);
                 Paragraph::default()
@@ -406,7 +406,7 @@ fn draw_experience(t: &mut Terminal<RawBackend>, area: &Rect) {
                     .title("2018 - 2020: Senior Software Engineer at GlobalSign")
                     .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                 .wrap(true)
-                .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that serve thousands of certificates per second. Took care of the migration of backend storage from MongoDB to PostgreSQL.\n\n\
+                .text("\n{mod=bold;fg=yellow High Performance Platform:} Implemented new functionalities that served thousands of certificates per second. Lead the migration of backend storage from MongoDB to PostgreSQL.\n\n\
                        {mod=bold;fg=yellow Kubernetes prototype:} Implemented a prototype of the system used in production to test the feasibility of a future migration.\n\n\
                        {mod=bold;fg=yellow Others:} Mentored multiple new-hires and had a highly involved role in the hiring process. As a side project I developed an static analysis tool to enforce the code style used in the company.\n\n\
                       ")
@@ -509,7 +509,7 @@ fn draw_looking_for(t: &mut Terminal<RawBackend>, area: &Rect) {
                         .title_style(Style::default().fg(Color::Green).modifier(Modifier::Bold)))
                     .wrap(true)
                     .text(" \
-                           \n{mod=bold;fg=yellow I am currently NOT looking for new opportunities}\n\n\n \
+                           \n{mod=bold;fg=yellow I am currently looking for new opportunities}\n\n\n \
                            My ideal roles involve a combination of the following:\n\n\
                            \t* Write low level libraries and/or components.\n\
                            \t* Design, develop and maintain a high performance and reliable systems.\n\
